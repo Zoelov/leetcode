@@ -17,15 +17,15 @@ func QuickSort(data []int, begin, end int) {
 
 func Partition(data []int, begin, end int) int {
 	baseNum := data[begin]
-	i := begin + 1
+	i := begin
 	j := end
 
 	for i != j {
-		for data[j] > baseNum && i < j {
+		for data[j] >= baseNum && i < j {
 			j--
 		}
 
-		for data[i] < baseNum && i < j {
+		for data[i] <= baseNum && i < j {
 			i++
 		}
 
