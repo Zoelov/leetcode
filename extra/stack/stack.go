@@ -1,7 +1,5 @@
 package stack
 
-import "errors"
-
 type Stack []interface{}
 
 func (s Stack) Len() int {
@@ -20,23 +18,10 @@ func (s *Stack) Push(v interface{}) {
 	*s = append(*s, v)
 }
 
-func (s Stack) Top() (interface{}, error) {
-	if len(s) == 0 {
-		return nil, errors.New("out of index")
-	}
-
-	return s[len(s)-1], nil
+func (s Stack) Top() interface{} {
+	return s[len(s)-1]
 }
 
-func (s *Stack) Pop() (interface{}, error) {
-	theStack := *s
-	if theStack.IsEmpty() {
-		return nil, errors.New("out of index")
-	}
-
-	value := theStack[len(theStack)-1]
-
-	*s = theStack[:len(theStack)-1]
-
-	return value, nil
+func (s *Stack) Pop() {
+	*s = (*s)[:len(*s)-1]
 }
